@@ -77,7 +77,7 @@ const PORTFOLIO = {
       title: "100-Year Floodplain Delineation",
       category: "Hydraulics and Hydrology",
       date: "2025",
-      images: "assets/images/West River_page-0001.jpg",
+      image: "assets/images/West River_page-0001.jpg",
       description: "Floodplain mapping and hydraulic modeling for a river reach to support a FEMA map revision.",
       skills: ["HEC-RAS", "ArcGIS Pro"],
       file: "assets/pdfs/West Nishanabontu River Flood Map.pdf"
