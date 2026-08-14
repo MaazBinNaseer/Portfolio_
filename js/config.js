@@ -105,12 +105,12 @@ const PORTFOLIO = {
       category: "Hydraulics and Hydrology",
       date: "2025",
       image: "assets/images/West River_page-0001.jpg",
-      description: "Floodplain mapping and hydraulic modeling for a river reach to support a FEMA map revision.",
+      description: "Floodplain mapping and hydraulic modeling for a river reach to learn FEMA map creation.",
       skills: ["HEC-RAS", "HEC-HMS", "ArcGIS Pro"],
       file: "assets/pdfs/West Nishanabontu River Flood Map.pdf"
     },
     {
-      title: "Lake Michigan Delineation and Flood Risk Analysis",
+      title: "Lake Michigan Delineation",
       category: "Shoreline Recession",
       date: "2025",
       image: "assets/images/Lake Michigan NSM.png",
@@ -119,7 +119,7 @@ const PORTFOLIO = {
       file: "assets/pdfs/LakeMichigan_Delineation.pdf"
     },
     {
-    title: "Coastal Flood Risk Assessment in Florida",
+    title: "Florida Extreme Weather and Flood Risk Analysis",
     category: "Data Analysis and Visualization",
     date: "2024",
     image: "assets/images/Data.png",
