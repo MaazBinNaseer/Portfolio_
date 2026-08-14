@@ -11,7 +11,6 @@ document.addEventListener("DOMContentLoaded", () => {
   renderLiveProjects();
   renderEngineeringProjects();
   renderGithubProjects();
-  renderResume();
   setupModal();
 });
 
