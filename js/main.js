@@ -90,36 +90,51 @@ function renderLiveProjects() {
 /* ---------- ENGINEERING PROJECT RESULTS ---------- */
 function renderEngineeringProjects() {
   const el = document.getElementById("engineering-grid");
+
   el.innerHTML = (PORTFOLIO.engineeringProjects || []).map((p, i) => `
-    <div class="card accent-amber" tabindex="0" data-modal="engineering" data-index="${i}">
+    <div class="card accent-amber" tabindex="0" data-index="${i}">
       <div class="card-media">
         ${p.image
           ? `<img src="${p.image}" alt="${escapeHtml(p.title)} preview">`
           : "PDF"
         }
       </div>
+
       <div class="card-body">
         <span class="pill">${escapeHtml(p.category || "Engineering")}</span>
-        <h3 class="card-title">${escapeHtml(p.title)}</h3>
-        <p class="card-desc">${escapeHtml(p.description || "")}</p>
+
+        <h3 class="card-title">
+          ${escapeHtml(p.title)}
+        </h3>
+
+        <p class="card-desc">
+          ${escapeHtml(p.description || "")}
+        </p>
+
         <div class="card-skills">
-          ${(p.skills || []).map(s => `<span class="tag">${escapeHtml(s)}</span>`).join("")}
+          ${(p.skills || [])
+            .map(s => `<span class="tag">${escapeHtml(s)}</span>`)
+            .join("")}
         </div>
-        <div class="card-meta">${escapeHtml(p.date || "")}</div>
+
+        <div class="card-meta">
+          <span>${escapeHtml(p.date || "")}</span>
+          <span>View project →</span>
+        </div>
       </div>
     </div>
   `).join("");
 
-  el.querySelectorAll(".card").forEach(card => card.addEventListener("click", () => {
-    const p = PORTFOLIO.engineeringProjects[card.dataset.index];
-    openModal(`
-      <span class="pill">${escapeHtml(p.category || "Engineering")}</span>
-      <h2 style="margin-top:.6rem;">${escapeHtml(p.title)}</h2>
-      <p class="card-desc" style="margin:.8rem 0;">${escapeHtml(p.description || "")}</p>
-      <iframe src="${p.file}" title="${escapeHtml(p.title)}"></iframe>
-      <p style="margin-top:.9rem;"><a class="text-link" href="${p.file}" download>Download PDF ↓</a></p>
-    `);
-  }));
+  el.querySelectorAll(".card").forEach(card => {
+    card.addEventListener("click", () => {
+      const p = PORTFOLIO.engineeringProjects[card.dataset.index];
+
+      if (p.file) {
+        window.open(p.file, "_blank");
+      }
+    });
+  });
+
   bindKeyboardActivation(el);
 }
 
