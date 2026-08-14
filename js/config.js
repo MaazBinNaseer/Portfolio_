@@ -44,11 +44,11 @@ const PORTFOLIO = {
   // Your public GitHub username. The site fetches your repos live
   // from the GitHub API — no need to list projects manually.
   githubUsername: "MaazBinNaseer",
-  githubMaxRepos: 6,          // how many repo cards to show
+  githubMaxRepos: 5,          // how many repo cards to show
   githubExcludeForks: true,   // hide forked repos
   // Optional: only show these repos, in this order (by exact repo name).
   // Leave as an empty array to auto-show your most recently updated repos instead.
-  githubPinnedRepos: ["storm_flood_analysis", "42Cub3D ", "Minishell-42 ", "Fract-ols ", "ft_irc_42 ", "42Cub3D"],
+  githubPinnedRepos: ["storm_flood_analysis", "42Cub3D", "Minishell-42", "Fract-ols", "ft_irc_42"],
 
   // ---------- SKILLS & TECH STACK ----------
   skills: [
