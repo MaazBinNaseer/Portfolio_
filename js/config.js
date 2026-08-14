@@ -7,7 +7,7 @@
 const PORTFOLIO = {
 
   // ---------- ABOUT ----------
-  name: "Maaz Bin Naseer",
+  name: "Maaz Naseer",
   role: "Environmental Engineer",
   bio:"<strong>Background:</strong> Environmental Engineer with experience in water resources, hydrologic and hydraulic modeling, stormwater management, flood risk assessment, and GIS. My background includes HEC-RAS and HEC-HMS modeling, watershed analysis, bridge and culvert inspections, and drainage-related projects." +
       "<br><br>" +
@@ -37,7 +37,7 @@ const PORTFOLIO = {
   socials: {
     email: "maazbinnaseer@gmail.com",           // e.g. "you@example.com" (auto-prefixed with mailto:)
     github: "https://github.com/MaazBinNaseer",          // e.g. "https://github.com/yourusername"
-    linkedin: "https://linkedin.com/in/maazbinnaseer",        // e.g. "https://linkedin.com/in/yourusername"
+    linkedin: "https://www.linkedin.com/in/maaz-naseer/",        // e.g. "https://linkedin.com/in/yourusername"
   },
 
   // ---------- GITHUB (Coding Projects section) ----------
