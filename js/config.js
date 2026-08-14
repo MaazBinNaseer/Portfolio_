@@ -94,5 +94,5 @@ const PORTFOLIO = {
 
   // ---------- RÉSUMÉ ----------
   // Drop your résumé PDF into assets/resume/ and point this at it.
-  resumeFile: "assets/resume/resume.pdf"
+  resumeFile: "assets/resume/Maaz Naseer Resume-2.pdf"
 };
