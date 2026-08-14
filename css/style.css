@@ -211,12 +211,17 @@ main{ max-width:1120px; margin:0 auto; padding:0 clamp(1.25rem, 5vw, 4rem); }
 @media (max-width:760px){
 
   .hero-bio-layout{
-    grid-template-columns:1fr;
-    gap:1.75rem;
+    display:grid;
+    grid-template-columns:minmax(0, 1fr) 260px;
+    gap:6rem;
+    align-items:center;
+    max-width:1100px;
   }
 
   .hero-photo{
-    justify-content:flex-start;
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
   }
 
   .hero-photo img{
