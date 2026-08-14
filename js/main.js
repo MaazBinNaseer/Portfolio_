@@ -60,17 +60,34 @@ function renderEducation() {
 function renderSocials() {
   const links = [];
   const s = PORTFOLIO.socials || {};
+
   if (s.email) links.push({ label: "Email", href: `mailto:${s.email}` });
   if (s.github) links.push({ label: "GitHub", href: s.github });
   if (s.linkedin) links.push({ label: "LinkedIn", href: s.linkedin });
   if (s.website) links.push({ label: "Website", href: s.website });
 
-  const html = links.map(l => `<a href="${l.href}" target="_blank" rel="noopener">${l.label}</a>`).join("");
-  document.getElementById("hero-links").innerHTML = html;
-  document.getElementById("footer-links").innerHTML = html;
+  const socialHtml = links
+    .map(l => `<a href="${l.href}" target="_blank" rel="noopener">${l.label}</a>`)
+    .join("");
 
-  if (s.github) document.getElementById("github-all-link").href = s.github;
-  else if (PORTFOLIO.githubUsername) document.getElementById("github-all-link").href = `https://github.com/${PORTFOLIO.githubUsername}`;
+  // Hero social links + resume button
+  document.getElementById("hero-links").innerHTML = `
+    ${socialHtml}
+
+    <a class="btn" href="${PORTFOLIO.resumeFile}" download>
+      Download Résumé
+    </a>
+  `;
+
+  // Footer keeps only the social links
+  document.getElementById("footer-links").innerHTML = socialHtml;
+
+  if (s.github) {
+    document.getElementById("github-all-link").href = s.github;
+  } else if (PORTFOLIO.githubUsername) {
+    document.getElementById("github-all-link").href =
+      `https://github.com/${PORTFOLIO.githubUsername}`;
+  }
 }
 
 /* ---------- SKILLS ---------- */

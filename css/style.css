@@ -98,7 +98,7 @@ main{ max-width:1120px; margin:0 auto; padding:0 clamp(1.25rem, 5vw, 4rem); }
 .hero h1{ font-size:clamp(2.2rem, 5vw, 3rem); margin-bottom:.35rem; }
 .hero-role{ font-family:var(--font-mono); color:var(--ink-soft);  font-size:1rem;  margin:0 0 1rem; }
 .hero-bio{ color:var(--ink-soft);  font-size:1.05rem; max-width:64ch; }
-.hero-links{ display:flex; gap:1.1rem; margin-top:1.4rem; }
+.hero-links{display:flex; align-items:center; gap:1.1rem; margin-top:1.4rem; width:100%; }
 .hero-links a{
   font-family:var(--font-mono); font-size:.85rem; text-decoration:none;
   color:var(--ink); border-bottom:1px solid var(--line-strong); padding-bottom:2px;
@@ -340,6 +340,18 @@ main{ max-width:1120px; margin:0 auto; padding:0 clamp(1.25rem, 5vw, 4rem); }
   transition:background .15s ease;
 }
 .btn:hover{ background:var(--blue); }
+
+.hero-links .btn{
+  margin-left:auto;
+  border-bottom:none;
+  color:var(--paper);
+  padding:.75rem 1.4rem;
+}
+
+.hero-links .btn:hover{
+  color:var(--paper);
+  border-bottom:none;
+}
 
 /* ============================================================
    FOOTER
