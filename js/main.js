@@ -264,12 +264,6 @@ async function renderGithubProjects() {
   }
 }
 
-/* ---------- RESUME ---------- */
-function renderResume() {
-  const link = document.getElementById("resume-link");
-  if (PORTFOLIO.resumeFile) link.href = PORTFOLIO.resumeFile;
-}
-
 /* ---------- MODAL ---------- */
 function setupModal() {
   const overlay = document.getElementById("modal-overlay");
