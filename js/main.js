@@ -212,7 +212,9 @@ async function renderGithubProjects() {
         <div class="card-media">&lt;/&gt;</div>
         <div class="card-body">
           <span class="pill">${escapeHtml(r.language || "Code")}</span>
-          <h3 class="card-title">${escapeHtml(r.name)}</h3>
+            <h3 class="card-title">
+            ${escapeHtml(PORTFOLIO.githubRepoTitles?.[r.name] || r.name)}
+            </h3>
           <p class="card-desc">${escapeHtml(r.description || "No description provided.")}</p>
           <div class="card-meta">
             <span>★ ${r.stargazers_count}</span>

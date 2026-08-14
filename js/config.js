@@ -49,7 +49,14 @@ const PORTFOLIO = {
   // Optional: only show these repos, in this order (by exact repo name).
   // Leave as an empty array to auto-show your most recently updated repos instead.
   githubPinnedRepos: ["storm_flood_analysis", "42Cub3D", "Minishell-42", "Fract-ols", "ft_irc_42", "push_swap_latest"],
-
+  githubRepoTitles: {
+  "storm_flood_analysis": "Florida Storm & Flood Analysis",
+  "42Cub3D": "Cub3D Raycasting Engine",
+  "Minishell-42": "Unix Minishell",
+  "Fract-ols": "Fractal Visualization Engine",
+  "ft_irc_42": "IRC Server in C++",
+  "push_swap_latest": "Push_Swap Sorting Algorithm"
+},
   // ---------- SKILLS & TECH STACK ----------
   skills: [
     {
