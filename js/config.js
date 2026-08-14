@@ -56,7 +56,7 @@ const PORTFOLIO = {
       category: "GIS Web App",
       url: "https://shoreline-maazbinnaseers-projects.vercel.app/",
       image: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Lake_Michigan_Sleeping_Bear_Dunes.jpg/330px-Lake_Michigan_Sleeping_Bear_Dunes.jpg?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail",
-      description: "An interactive map showing flood risk zones and gauge data for a regional watershed.",
+      description: "An interactive map showing flood risk zones and gauge data for a regional watershed. Password is LakeMichigan123",
       skills: ["Leaflet", "ArcGIS Pro", "JavaScript", "Python"]
     },
     // {
@@ -75,11 +75,11 @@ const PORTFOLIO = {
   engineeringProjects: [
     {
       title: "100-Year Floodplain Delineation",
-      category: "Hydraulics",
+      category: "Hydraulics and Hydrology",
       date: "2025",
       description: "Floodplain mapping and hydraulic modeling for a river reach to support a FEMA map revision.",
       skills: ["HEC-RAS", "ArcGIS Pro"],
-      file: "assets/pdfs/sample-report.pdf"
+      file: "assets/pdfs/West Nishanabontu River Flood Map.pdf"
     },
     {
       title: "Regional Stormwater Master Plan",

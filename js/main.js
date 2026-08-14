@@ -58,8 +58,11 @@ function renderLiveProjects() {
   const el = document.getElementById("live-grid");
   el.innerHTML = (PORTFOLIO.liveProjects || []).map((p, i) => `
     <div class="card" tabindex="0" data-modal="live" data-index="${i}">
-      <div class="card-media">
-        ${p.image ? `<img src="${p.image}" alt="${escapeHtml(p.title)} screenshot">` : "PREVIEW"}
+       <div class="card-media">
+        ${p.image
+          ? `<img src="${p.image}" alt="${escapeHtml(p.title)} preview">`
+          : "PDF"
+        }
       </div>
       <div class="card-body">
         <span class="pill">${escapeHtml(p.category || "Project")}</span>
