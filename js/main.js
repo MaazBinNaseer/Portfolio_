@@ -5,6 +5,7 @@
 
 document.addEventListener("DOMContentLoaded", () => {
   renderAbout();
+  renderEducation();
   renderSocials();
   renderSkills();
   renderLiveProjects();
@@ -22,6 +23,38 @@ function renderAbout() {
   setText("hero-role", PORTFOLIO.role);
   document.getElementById("hero-bio").innerHTML = PORTFOLIO.bio;
   setText("footer-name", PORTFOLIO.name);
+}
+
+function renderEducation() {
+  const el = document.getElementById("hero-education");
+  if (!el) return;
+
+  el.innerHTML = (PORTFOLIO.education || []).map(item => `
+    <div class="education-item">
+
+      <div class="education-icon">
+        ${item.icon
+          ? `<img src="${item.icon}" alt="${escapeHtml(item.school)} logo">`
+          : ""
+        }
+      </div>
+
+      <div class="education-info">
+        <div class="education-degree">
+          ${escapeHtml(item.degree)}
+        </div>
+
+        <div class="education-school">
+          ${escapeHtml(item.school)}
+          ${item.location
+            ? `<span class="education-location"> · ${escapeHtml(item.location)}</span>`
+            : ""
+          }
+        </div>
+      </div>
+
+    </div>
+  `).join("");
 }
 
 function renderSocials() {

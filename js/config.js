@@ -12,7 +12,26 @@ const PORTFOLIO = {
   bio:"<strong>Background:</strong> Environmental Engineer with experience in water resources, hydrologic and hydraulic modeling, stormwater management, flood risk assessment, and GIS. My background includes HEC-RAS and HEC-HMS modeling, watershed analysis, bridge and culvert inspections, and drainage-related projects." +
       "<br><br>" +
       "<strong>Objective:</strong> I’m currently seeking opportunities in Water Resources, Stormwater, Hydrology, and Environmental Engineering where I can contribute to resilient and sustainable infrastructure.",
-
+  education: [
+    {
+      icon: "assets/images/purdue_icon.png",
+      degree: "MSc in Environmental Engineering",
+      school: "Purdue University",
+      location: "West Lafayette, IN"
+    },
+    {
+      icon: "assets/images/ADU_icon.png",
+      degree: "BSc in Mechanical Engineering",
+      school: "Abu Dhabi University",
+      location: "Abu Dhabi, UAE"
+    },
+    {
+      icon: "assets/images/42_icon.png",
+      degree: "Diploma",
+      school: "42 Abu Dhabi",
+      location: "Abu Dhabi, UAE"
+    }
+  ],
   // Shown as small text links under the bio, and again in the footer.
   // Leave the value empty ("") to hide a link.
   socials: {
