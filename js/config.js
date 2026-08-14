@@ -79,16 +79,17 @@ const PORTFOLIO = {
       date: "2025",
       image: "assets/images/West River_page-0001.jpg",
       description: "Floodplain mapping and hydraulic modeling for a river reach to support a FEMA map revision.",
-      skills: ["HEC-RAS", "ArcGIS Pro"],
+      skills: ["HEC-RAS", "HEC-HMS", "ArcGIS Pro"],
       file: "assets/pdfs/West Nishanabontu River Flood Map.pdf"
     },
     {
-      title: "Regional Stormwater Master Plan",
-      category: "Stormwater",
-      date: "2024",
-      description: "Watershed-scale drainage analysis and capital improvement recommendations for a growing municipality.",
-      skills: ["EPA SWMM", "GIS"],
-      file: "assets/pdfs/sample-report.pdf"
+      title: "Lake Michigan Delineation and Flood Risk Analysis",
+      category: "Shoreline Recession",
+      date: "2025",
+      iamge: "assests/images/Lake Michigan NSM.png",
+      description: "Lake Michigan shoreline analysis using Net Shoreline Movement.",
+      skills: ["DSAS", "QGIS", "ArcGIS Pro"],
+      file: "assets/pdfs/LakeMichigan_Delineation.pdf"
     }
   ],
 
