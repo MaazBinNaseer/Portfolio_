@@ -7,25 +7,23 @@
 const PORTFOLIO = {
 
   // ---------- ABOUT ----------
-  name: "Your Name",
-  role: "Water Resources Engineer",
-  bio: "Write 2–4 sentences about who you are, the kind of water resources work you do " +
-       "(stormwater, floodplain, hydraulic modeling, watershed planning, etc.), and what " +
-       "you're looking for right now. This shows up right under your name.",
+  name: "Maaz Bin Naseer",
+  role: "Environmental Engineer",
+  bio: "Environmental Engineer with experience in water resources, hydrologic and hydraulic modeling, stormwater management, flood risk assessment, and GIS. My background includes HEC-RAS and HEC-HMS modeling, watershed analysis, bridge and culvert inspections, and drainage-related projects." + 
+    "I’m currently seeking opportunities in Water Resources, Stormwater, Hydrology, and Environmental Engineering where I can contribute to resilient and sustainable infrastructure.",
 
   // Shown as small text links under the bio, and again in the footer.
   // Leave the value empty ("") to hide a link.
   socials: {
-    email: "",           // e.g. "you@example.com" (auto-prefixed with mailto:)
-    github: "",          // e.g. "https://github.com/yourusername"
-    linkedin: "",        // e.g. "https://linkedin.com/in/yourusername"
-    website: ""          // any other site you want linked
+    email: "maazbinnaseer@gmail.com",           // e.g. "you@example.com" (auto-prefixed with mailto:)
+    github: "https://github.com/MaazBinNaseer",          // e.g. "https://github.com/yourusername"
+    linkedin: "https://linkedin.com/in/maazbinnaseer",        // e.g. "https://linkedin.com/in/yourusername"
   },
 
   // ---------- GITHUB (Coding Projects section) ----------
   // Your public GitHub username. The site fetches your repos live
   // from the GitHub API — no need to list projects manually.
-  githubUsername: "your-github-username",
+  githubUsername: "MaazBinNaseer",
   githubMaxRepos: 6,          // how many repo cards to show
   githubExcludeForks: true,   // hide forked repos
   // Optional: only show these repos, in this order (by exact repo name).
@@ -40,11 +38,11 @@ const PORTFOLIO = {
     },
     {
       category: "GIS & Design",
-      items: ["ArcGIS Pro", "QGIS", "AutoCAD Civil 3D"]
+      items: ["ArcGIS Pro", "QGIS", "AutoCAD Civil 3D", "DSAS", "MicroStation"]
     },
     {
       category: "Programming & Data",
-      items: ["Python", "MATLAB", "VBA", "SQL"]
+      items: ["Python", "MATLAB", "VBA", "SQL", "Data Analysis", "Data Visualization"]
     }
   ],
 
@@ -54,21 +52,21 @@ const PORTFOLIO = {
   // e.g. "assets/images/project1.png"
   liveProjects: [
     {
-      title: "Watershed Dashboard",
+      title: "Shoreline Recession Lake Michigan",
       category: "GIS Web App",
-      url: "https://example.com",
-      image: "",
+      url: "https://shoreline-maazbinnaseers-projects.vercel.app/",
+      image: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Lake_Michigan_Sleeping_Bear_Dunes.jpg/330px-Lake_Michigan_Sleeping_Bear_Dunes.jpg?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail",
       description: "An interactive map showing flood risk zones and gauge data for a regional watershed.",
-      skills: ["Leaflet", "ArcGIS Online", "JavaScript"]
+      skills: ["Leaflet", "ArcGIS Pro", "JavaScript", "Python"]
     },
-    {
-      title: "Stormwater Sizing Tool",
-      category: "Calculator",
-      url: "https://example.com",
-      image: "",
-      description: "A browser-based tool that sizes detention basins from rainfall and site inputs.",
-      skills: ["Python", "Flask", "Vercel"]
-    }
+    // {
+    //   title: "Stormwater Sizing Tool",
+    //   category: "Calculator",
+    //   url: "https://example.com",
+    //   image: "",
+    //   description: "A browser-based tool that sizes detention basins from rainfall and site inputs.",
+    //   skills: ["Python", "Flask", "Vercel"]
+    // }
   ],
 
   // ---------- ENGINEERING PROJECT RESULTS ----------
