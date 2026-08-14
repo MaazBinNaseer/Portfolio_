@@ -90,6 +90,15 @@ const PORTFOLIO = {
       description: "Lake Michigan shoreline analysis using Net Shoreline Movement.",
       skills: ["DSAS", "QGIS", "ArcGIS Pro"],
       file: "assets/pdfs/LakeMichigan_Delineation.pdf"
+    },
+    {
+    title: "Coastal Flood Risk Assessment in Florida",
+    category: "Data Analysis and Visualization",
+    date: "2024",
+    image: "assets/images/Data.png",
+    description: "Flood Risk analysis for most severe weather events.",
+    skills: ["Python", "Data Analysis", "Data Visualization", "Policy mitigation"],
+    file: "assets/pdfs/Coastal Flood Risk.pdf"
     }
   ],
 
