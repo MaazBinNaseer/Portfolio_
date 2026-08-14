@@ -58,11 +58,8 @@ function renderLiveProjects() {
   const el = document.getElementById("live-grid");
   el.innerHTML = (PORTFOLIO.liveProjects || []).map((p, i) => `
     <div class="card" tabindex="0" data-modal="live" data-index="${i}">
-       <div class="card-media">
-        ${p.image
-          ? `<img src="${p.image}" alt="${escapeHtml(p.title)} preview">`
-          : "PDF"
-        }
+      <div class="card-media">
+        ${p.image ? `<img src="${p.image}" alt="${escapeHtml(p.title)} screenshot">` : "PREVIEW"}
       </div>
       <div class="card-body">
         <span class="pill">${escapeHtml(p.category || "Project")}</span>
@@ -95,7 +92,12 @@ function renderEngineeringProjects() {
   const el = document.getElementById("engineering-grid");
   el.innerHTML = (PORTFOLIO.engineeringProjects || []).map((p, i) => `
     <div class="card accent-amber" tabindex="0" data-modal="engineering" data-index="${i}">
-      <div class="card-media">PDF</div>
+      <div class="card-media">
+        ${p.image
+          ? `<img src="${p.image}" alt="${escapeHtml(p.title)} preview">`
+          : "PDF"
+        }
+      </div>
       <div class="card-body">
         <span class="pill">${escapeHtml(p.category || "Engineering")}</span>
         <h3 class="card-title">${escapeHtml(p.title)}</h3>
