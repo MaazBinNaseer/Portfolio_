@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio</title>
+<meta name="description" content="Engineering &amp; software portfolio">
+
+<!-- Fonts: Space Grotesk (display), IBM Plex Sans (body), IBM Plex Mono (labels/metadata) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="blueprint-bg" aria-hidden="true"></div>
+
+<header class="nav">
+  <a href="#top" class="nav-brand" id="nav-brand">YOUR NAME</a>
+  <nav class="nav-links">
+    <a href="#live">Live Builds</a>
+    <a href="#engineering">Engineering</a>
+    <a href="#code">Code</a>
+    <a href="#skills">Skills</a>
+    <a href="#resume">Résumé</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- ABOUT -->
+  <section class="hero" id="about">
+    <p class="eyebrow">// about</p>
+    <h1 id="hero-name">Your Name</h1>
+    <p class="hero-role" id="hero-role">Role / Title goes here</p>
+    <p class="hero-bio" id="hero-bio">
+      A short bio placeholder. Edit <code>js/config.js</code> to replace this with a real
+      introduction — what you do, what you build, and what you're looking for.
+    </p>
+    <div class="hero-links" id="hero-links"><!-- social links injected by JS --></div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="section" id="skills">
+    <p class="eyebrow">// skills</p>
+    <h2>Skills &amp; Tech Stack</h2>
+    <div class="skills-grid" id="skills-grid"><!-- injected by JS --></div>
+  </section>
+
+  <!-- LIVE WEBSITE RESULTS -->
+  <section class="section" id="live">
+    <p class="eyebrow">// live builds</p>
+    <h2>Live Website Results</h2>
+    <p class="section-sub">Shipped sites, with the skills used to build each one.</p>
+    <div class="card-grid" id="live-grid"><!-- injected by JS --></div>
+  </section>
+
+  <!-- ENGINEERING PROJECT RESULTS -->
+  <section class="section" id="engineering">
+    <p class="eyebrow">// engineering</p>
+    <h2>Engineering Project Results</h2>
+    <p class="section-sub">Click a report to open it inline.</p>
+    <div class="card-grid" id="engineering-grid"><!-- injected by JS --></div>
+  </section>
+
+  <!-- CODING PROJECTS (GITHUB) -->
+  <section class="section" id="code">
+    <p class="eyebrow">// code</p>
+    <h2>Coding Projects</h2>
+    <p class="section-sub">Pulled live from GitHub — updates automatically as you push.</p>
+    <div class="card-grid" id="code-grid"><!-- injected by JS --></div>
+    <p class="status-text" id="code-status"></p>
+    <a class="text-link" id="github-all-link" href="#" target="_blank" rel="noopener">View all repositories on GitHub →</a>
+  </section>
+
+  <!-- RESUME -->
+  <section class="section resume-section" id="resume">
+    <p class="eyebrow">// résumé</p>
+    <h2>Résumé</h2>
+    <p class="section-sub">Download a copy to keep.</p>
+    <a class="btn" id="resume-link" href="assets/resume/resume.pdf" download>Download Résumé (PDF)</a>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p id="footer-name">Your Name</p>
+  <div class="footer-links" id="footer-links"><!-- injected by JS --></div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal" role="dialog" aria-modal="true">
+    <button class="modal-close" id="modal-close" aria-label="Close">&times;</button>
+    <div class="modal-body" id="modal-body"><!-- injected by JS --></div>
+  </div>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
