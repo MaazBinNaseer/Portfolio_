@@ -129,8 +129,7 @@ main{ max-width:1120px; margin:0 auto; padding:0 clamp(1.25rem, 5vw, 4rem); }
   display:flex;
   align-items:center;
   justify-content:flex-end;
-  transform:translateX(50px);
-  transform:translateY(-30px);
+  transform:translate(80px, -50px);
 }
 
 .hero-photo img{
