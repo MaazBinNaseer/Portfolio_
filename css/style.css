@@ -107,6 +107,43 @@ main{ max-width:1120px; margin:0 auto; padding:0 clamp(1.25rem, 5vw, 4rem); }
 .hero-links a:hover{ color:var(--blue); border-color:var(--blue); }
 
 /* ============================================================
+   HERO BIO + PHOTO
+   ============================================================ */
+
+.hero-bio-layout{
+  display:grid;
+  grid-template-columns:minmax(0, 1fr) 230px;
+  gap:3.5rem;
+  align-items:center;
+  max-width:950px;
+}
+
+.hero-bio-content{
+  min-width:0;
+}
+
+.hero-photo{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.hero-photo img{
+  width:200px;
+  height:200px;
+  object-fit:cover;
+
+  /* Perfect circle */
+  border-radius:50%;
+
+  border:5px solid var(--surface);
+
+  box-shadow:
+    0 0 0 1px var(--line-strong),
+    0 8px 30px rgba(20,24,31,0.10);
+}
+
+/* ============================================================
    EDUCATION
    ============================================================ */
 
@@ -172,8 +209,19 @@ main{ max-width:1120px; margin:0 auto; padding:0 clamp(1.25rem, 5vw, 4rem); }
 }
 
 @media (max-width:760px){
-  .hero-education{
+
+  .hero-bio-layout{
     grid-template-columns:1fr;
+    gap:1.75rem;
+  }
+
+  .hero-photo{
+    justify-content:flex-start;
+  }
+
+  .hero-photo img{
+    width:150px;
+    height:150px;
   }
 }
 
