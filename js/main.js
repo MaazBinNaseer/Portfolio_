@@ -20,7 +20,7 @@ function renderAbout() {
   setText("nav-brand", PORTFOLIO.name.toUpperCase());
   setText("hero-name", PORTFOLIO.name);
   setText("hero-role", PORTFOLIO.role);
-  setText("hero-bio", PORTFOLIO.bio);
+  document.getElementById("hero-bio").innerHTML = PORTFOLIO.bio;
   setText("footer-name", PORTFOLIO.name);
 }
 

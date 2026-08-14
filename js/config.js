@@ -9,8 +9,9 @@ const PORTFOLIO = {
   // ---------- ABOUT ----------
   name: "Maaz Bin Naseer",
   role: "Environmental Engineer",
-  bio: "Environmental Engineer with experience in water resources, hydrologic and hydraulic modeling, stormwater management, flood risk assessment, and GIS. My background includes HEC-RAS and HEC-HMS modeling, watershed analysis, bridge and culvert inspections, and drainage-related projects." + 
-    "I’m currently seeking opportunities in Water Resources, Stormwater, Hydrology, and Environmental Engineering where I can contribute to resilient and sustainable infrastructure.",
+  bio:"<strong>Background:</strong> Environmental Engineer with experience in water resources, hydrologic and hydraulic modeling, stormwater management, flood risk assessment, and GIS. My background includes HEC-RAS and HEC-HMS modeling, watershed analysis, bridge and culvert inspections, and drainage-related projects." +
+      "<br><br>" +
+      "<strong>Objective:</strong> I’m currently seeking opportunities in Water Resources, Stormwater, Hydrology, and Environmental Engineering where I can contribute to resilient and sustainable infrastructure.",
 
   // Shown as small text links under the bio, and again in the footer.
   // Leave the value empty ("") to hide a link.
