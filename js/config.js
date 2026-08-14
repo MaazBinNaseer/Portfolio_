@@ -86,7 +86,7 @@ const PORTFOLIO = {
       title: "Lake Michigan Delineation and Flood Risk Analysis",
       category: "Shoreline Recession",
       date: "2025",
-      iamge: "assests/images/Lake Michigan NSM.png",
+      image: "assests/images/Lake Michigan NSM.png",
       description: "Lake Michigan shoreline analysis using Net Shoreline Movement.",
       skills: ["DSAS", "QGIS", "ArcGIS Pro"],
       file: "assets/pdfs/LakeMichigan_Delineation.pdf"
