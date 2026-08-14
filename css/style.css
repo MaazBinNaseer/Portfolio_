@@ -112,8 +112,8 @@ main{ max-width:1120px; margin:0 auto; padding:0 clamp(1.25rem, 5vw, 4rem); }
 
 .hero-education{
   display:grid;
-  grid-template-columns:repeat(3, 1fr);
-  gap:1.25rem;
+  grid-template-columns:repeat(2, 1fr);
+  gap:1.25rem 2rem;
   margin:0 0 1.6rem;
 }
 
