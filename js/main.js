@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
   renderLiveProjects();
   renderEngineeringProjects();
   renderGithubProjects();
+  setupEngineeringCarousel();
   setupModal();
 });
 
@@ -186,6 +187,32 @@ function renderEngineeringProjects() {
 
   bindKeyboardActivation(el);
 }
+
+function setupEngineeringCarousel() {
+  const track = document.getElementById("engineering-grid");
+  const prev = document.getElementById("engineering-prev");
+  const next = document.getElementById("engineering-next");
+
+  if (!track || !prev || !next) return;
+
+  const scrollOneCard = direction => {
+    const card = track.querySelector(".card");
+    if (!card) return;
+
+    const gap = 24; // 1.5rem
+    const distance = card.offsetWidth + gap;
+
+    track.scrollBy({
+      left: direction * distance,
+      behavior: "smooth"
+    });
+  };
+
+  next.addEventListener("click", () => scrollOneCard(1));
+  prev.addEventListener("click", () => scrollOneCard(-1));
+}
+
+
 
 /* ---------- CODING PROJECTS (live from GitHub) ---------- */
 async function renderGithubProjects() {

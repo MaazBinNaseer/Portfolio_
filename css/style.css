@@ -332,6 +332,98 @@ main{ max-width:1120px; margin:0 auto; padding:0 clamp(1.25rem, 5vw, 4rem); }
 .card-meta .dot{ width:8px; height:8px; border-radius:50%; background:var(--ink-faint); display:inline-block; }
 
 /* ============================================================
+   ENGINEERING CAROUSEL
+   ============================================================ */
+
+.engineering-carousel{
+  position:relative;
+}
+
+.engineering-carousel-track{
+  display:flex;
+  gap:1.5rem;
+
+  overflow-x:hidden;
+  scroll-behavior:smooth;
+
+  padding:.25rem 0 1rem;
+}
+
+/* Keep the existing card design — only control its carousel width */
+.engineering-carousel-track .card{
+  flex:0 0 calc((100% - 3rem) / 3);
+}
+
+
+/* LEFT / RIGHT BUTTONS */
+
+.engineering-arrow{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  z-index:10;
+
+  width:46px;
+  height:46px;
+
+  border:none;
+  border-radius:50%;
+
+  background:var(--ink);
+  color:var(--surface);
+
+  font-size:2rem;
+  cursor:pointer;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  box-shadow:var(--shadow-card);
+
+  transition:
+    background .15s ease,
+    transform .15s ease;
+}
+
+.engineering-arrow:hover{
+  background:var(--amber);
+  transform:translateY(-50%) scale(1.05);
+}
+
+.engineering-prev{
+  left:-23px;
+}
+
+.engineering-next{
+  right:-23px;
+}
+
+/* ---------- MOBILE CAROUSEL ---------- */
+@media (max-width:760px){
+
+  .engineering-carousel-track .card{
+    flex:0 0 100%;
+  }
+
+  .engineering-prev{
+    left:8px;
+  }
+
+  .engineering-next{
+    right:8px;
+  }
+}
+
+/* ---------- MOBILE NAV ---------- */
+@media (max-width:640px){
+  .nav-links{
+    display:none;
+  }
+}
+
+
+/* ============================================================
    RESUME / BUTTON
    ============================================================ */
 .btn{
