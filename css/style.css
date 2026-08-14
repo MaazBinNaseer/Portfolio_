@@ -392,11 +392,11 @@ main{ max-width:1120px; margin:0 auto; padding:0 clamp(1.25rem, 5vw, 4rem); }
 }
 
 .engineering-prev{
-  left:-23px;
+  left:-45px;
 }
 
 .engineering-next{
-  right:-23px;
+  right:-45px;
 }
 
 /* ---------- MOBILE CAROUSEL ---------- */
