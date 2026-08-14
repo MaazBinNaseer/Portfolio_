@@ -94,7 +94,7 @@ h1,h2,h3{ font-family:var(--font-display); font-weight:600; margin:0; letter-spa
    ============================================================ */
 main{ max-width:1120px; margin:0 auto; padding:0 clamp(1.25rem, 5vw, 4rem); }
 
-.hero{ padding:5.5rem 0 4rem;  max-width:900px; }
+.hero{ padding:5.5rem 0 4rem; max-width:none; width:100%; }
 .hero h1{ font-size:clamp(2.2rem, 5vw, 3rem); margin-bottom:.35rem; }
 .hero-role{ font-family:var(--font-mono); color:var(--ink-soft);  font-size:1rem;  margin:0 0 1rem; }
 .hero-bio{ color:var(--ink-soft);  font-size:1.05rem; max-width:64ch; }
@@ -112,10 +112,13 @@ main{ max-width:1120px; margin:0 auto; padding:0 clamp(1.25rem, 5vw, 4rem); }
 
 .hero-bio-layout{
   display:grid;
-  grid-template-columns:minmax(0, 1fr) 230px;
-  gap:3.5rem;
+  grid-template-columns:minmax(0, 700px) 240px;
+  justify-content:space-between;
   align-items:center;
-  max-width:950px;
+
+  width:100%;
+  max-width:none;
+  gap:4rem;
 }
 
 .hero-bio-content{
