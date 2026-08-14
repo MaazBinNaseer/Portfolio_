@@ -28,7 +28,7 @@ const PORTFOLIO = {
   githubExcludeForks: true,   // hide forked repos
   // Optional: only show these repos, in this order (by exact repo name).
   // Leave as an empty array to auto-show your most recently updated repos instead.
-  githubPinnedRepos: ["storm_flood_analysis", "42Cub3D ", "Minishell-42 ", "Fract-ols ", "ft_irc_42 ", "ft_transcendence_42 "],
+  githubPinnedRepos: ["storm_flood_analysis", "42Cub3D ", "Minishell-42 ", "Fract-ols ", "ft_irc_42 ", "42Cub3D"],
 
   // ---------- SKILLS & TECH STACK ----------
   skills: [
