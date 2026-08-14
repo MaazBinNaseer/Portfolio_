@@ -15,13 +15,13 @@ const PORTFOLIO = {
   education: [
     {
       icon: "assets/images/purdue_icon.png",
-      degree: "MSc in Environmental Engineering",
+      degree: "M.Sc. in Environmental Engineering",
       school: "Purdue University",
       location: "West Lafayette, IN"
     },
     {
       icon: "assets/images/ADU_icon.png",
-      degree: "BSc in Mechanical Engineering",
+      degree: "B.Sc. in Mechanical Engineering",
       school: "Abu Dhabi University",
       location: "Abu Dhabi, UAE"
     },
