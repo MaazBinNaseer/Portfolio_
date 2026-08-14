@@ -112,7 +112,7 @@ main{ max-width:1120px; margin:0 auto; padding:0 clamp(1.25rem, 5vw, 4rem); }
 
 .hero-bio-layout{
   display:grid;
-  grid-template-columns:minmax(0, 700px) 240px;
+  grid-template-columns:minmax(0, 700px) 300px;
   justify-content:space-between;
   align-items:center;
 
@@ -133,11 +133,15 @@ main{ max-width:1120px; margin:0 auto; padding:0 clamp(1.25rem, 5vw, 4rem); }
 
 .hero-photo img{
   width:300px;
-  height:300px;
-  object-fit:cover;
+  aspect-ratio:1 / 1;
+  height:auto;
 
-  /* Perfect circle */
+  object-fit:cover;
+  object-position:center;
+
   border-radius:50%;
+
+  display:block;
 
   border:5px solid var(--surface);
 
