@@ -126,6 +126,15 @@ const PORTFOLIO = {
     description: "Flood Risk analysis for most severe weather events.",
     skills: ["Python", "Data Analysis", "Data Visualization", "Policy mitigation"],
     file: "assets/pdfs/Coastal Flood Risk.pdf"
+    },
+    {
+    title: "Metal Slag testing",
+    category: "Wastewater Leachate Testing",
+    date: "2024",
+    image: "",
+    description: "Testing of metals slags for leachate",
+    skills: ["WasteWater Testing", "Laboratory Analysis", "Hypothesis",],
+    file: "assets/pdfs/Metal slag report.pdf"
     }
   ],
 
