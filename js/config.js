@@ -27,7 +27,7 @@ const PORTFOLIO = {
     },
     {
       icon: "assets/images/42_icon.png",
-      degree: "Diploma",
+      degree: "Diploma in Software Development",
       school: "42 Abu Dhabi",
       location: "Abu Dhabi, UAE"
     }
