@@ -61,7 +61,7 @@ const PORTFOLIO = {
   skills: [
     {
       category: "Modeling & Analysis",
-      items: ["HEC-RAS", "HEC-HMS", "EPA SWMM", "WaterCAD / SewerCAD"]
+      items: ["HEC-RAS", "HEC-HMS", "EPA SWMM", "WaterCAD / SewerCAD", "Ansys", "CFD", "SolidWorks"]
     },
     {
       category: "GIS & Design",
