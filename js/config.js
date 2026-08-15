@@ -167,8 +167,18 @@ const PORTFOLIO = {
     date: "2017",
     image: "assets/images/Bracket.png",
     description: "Numerical Analysis using ANSYS",
-    skills: ["WasteWater Testing", "Laboratory Analysis", "Hypothesis"],
+    skills: ["Ansys", "Civil loading", "Stress calculation"],
     file: "assets/pdfs/Numerical Analysis on 3D Bracket.pdf"
+  },
+  {
+    title: "Element Analysis",
+    discipline: "mechanical",
+    category: "Element Analysis",
+    date: "2017",
+    image: "assets/images/Node Element.png",
+    description: "Element Analysis using Matlab",
+    skills: ["Matlab", "Civil loading", "Stress calculation"],
+    file: "assets/pdfs/Element Analysis.pdf"
   }
 ],
 
