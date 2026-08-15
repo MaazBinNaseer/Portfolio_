@@ -243,7 +243,7 @@ function setupEngineeringCarousel(trackId, prevId, nextId) {
   }
 
   const visibleCards = 3;
-  const AUTO_DELAY = 7000;
+  const AUTO_DELAY = 5000;
   const TRANSITION_TIME = 800;
 
   let currentIndex = visibleCards;
