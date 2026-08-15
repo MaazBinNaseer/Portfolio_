@@ -233,22 +233,170 @@ function setupEngineeringCarousel(trackId, prevId, nextId) {
 
   if (!track || !prev || !next) return;
 
-  const scrollOneCard = direction => {
+  const AUTO_DELAY = 7000;      // 7 seconds between slides
+  const ANIMATION_TIME = 700;   // slide animation duration
+
+  let autoplayTimer = null;
+  let isAnimating = false;
+
+  const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+
+
+  function getCardDistance() {
     const card = track.querySelector(".card");
+    if (!card) return 0;
 
-    if (!card) return;
+    const styles = getComputedStyle(track);
+    const gap = parseFloat(styles.gap) || 0;
 
-    const gap = 24;
-    const distance = card.offsetWidth + gap;
+    return card.getBoundingClientRect().width + gap;
+  }
+
+
+  /* ---------- NEXT ---------- */
+
+  function moveNext() {
+    if (isAnimating) return;
+
+    const cards = track.querySelectorAll(".card");
+
+    // No reason to rotate if there are 3 or fewer cards
+    if (cards.length <= 3) return;
+
+    const distance = getCardDistance();
+    if (!distance) return;
+
+    isAnimating = true;
 
     track.scrollBy({
-      left: direction * distance,
+      left: distance,
       behavior: "smooth"
     });
-  };
 
-  next.addEventListener("click", () => scrollOneCard(1));
-  prev.addEventListener("click", () => scrollOneCard(-1));
+    setTimeout(() => {
+      // Move first card to the end
+      const firstCard = track.firstElementChild;
+
+      if (firstCard) {
+        track.appendChild(firstCard);
+      }
+
+      // Reset scroll position invisibly
+      track.scrollLeft -= distance;
+
+      isAnimating = false;
+    }, ANIMATION_TIME);
+  }
+
+
+  /* ---------- PREVIOUS ---------- */
+
+  function movePrevious() {
+    if (isAnimating) return;
+
+    const cards = track.querySelectorAll(".card");
+
+    if (cards.length <= 3) return;
+
+    const distance = getCardDistance();
+    if (!distance) return;
+
+    isAnimating = true;
+
+    const lastCard = track.lastElementChild;
+
+    if (lastCard) {
+      track.prepend(lastCard);
+    }
+
+    // Position instantly so the newly prepended card is off-screen
+    track.scrollLeft += distance;
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        track.scrollBy({
+          left: -distance,
+          behavior: "smooth"
+        });
+      });
+    });
+
+    setTimeout(() => {
+      isAnimating = false;
+    }, ANIMATION_TIME);
+  }
+
+
+  /* ---------- AUTOPLAY ---------- */
+
+  function startAutoplay() {
+    if (prefersReducedMotion) return;
+
+    stopAutoplay();
+
+    autoplayTimer = setInterval(() => {
+      moveNext();
+    }, AUTO_DELAY);
+  }
+
+
+  function stopAutoplay() {
+    if (autoplayTimer) {
+      clearInterval(autoplayTimer);
+      autoplayTimer = null;
+    }
+  }
+
+
+  function restartAutoplay() {
+    stopAutoplay();
+    startAutoplay();
+  }
+
+
+  /* ---------- ARROWS ---------- */
+
+  next.addEventListener("click", () => {
+    moveNext();
+    restartAutoplay();
+  });
+
+  prev.addEventListener("click", () => {
+    movePrevious();
+    restartAutoplay();
+  });
+
+
+  /* ---------- PAUSE ON HOVER ---------- */
+
+  track.addEventListener("mouseenter", stopAutoplay);
+  track.addEventListener("mouseleave", startAutoplay);
+
+  prev.addEventListener("mouseenter", stopAutoplay);
+  prev.addEventListener("mouseleave", startAutoplay);
+
+  next.addEventListener("mouseenter", stopAutoplay);
+  next.addEventListener("mouseleave", startAutoplay);
+
+
+  /* ---------- PAUSE WHILE USER IS INTERACTING ---------- */
+
+  track.addEventListener("focusin", stopAutoplay);
+
+  track.addEventListener("focusout", () => {
+    setTimeout(() => {
+      if (!track.contains(document.activeElement)) {
+        startAutoplay();
+      }
+    }, 100);
+  });
+
+
+  /* ---------- START ---------- */
+
+  startAutoplay();
 }
 
 

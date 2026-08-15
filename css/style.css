@@ -345,6 +345,7 @@ main{ max-width:1120px; margin:0 auto; padding:0 clamp(1.25rem, 5vw, 4rem); }
 
   overflow-x:hidden;
   scroll-behavior:smooth;
+  scrollbar-width:none;
 
   padding:.25rem 0 1rem;
 }
@@ -354,6 +355,9 @@ main{ max-width:1120px; margin:0 auto; padding:0 clamp(1.25rem, 5vw, 4rem); }
   flex:0 0 calc((100% - 3rem) / 3);
 }
 
+.engineering-carousel-track::-webkit-scrollbar{
+  display:none;
+}
 
 /* LEFT / RIGHT BUTTONS */
 
