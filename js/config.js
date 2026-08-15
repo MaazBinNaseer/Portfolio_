@@ -171,6 +171,16 @@ const PORTFOLIO = {
     file: "assets/pdfs/Numerical Analysis on 3D Bracket.pdf"
   },
   {
+    title: "Quad Tilt Wing",
+    discipline: "mechanical",
+    category: "Aerodynamics",
+    date: "2018",
+    image: "assets/images/Wing.png",
+    description: "Quad Tilt Wing tunnel testing",
+    skills: ["Experimentation", "Aerodynamics", "Fluids"],
+    file: "assets/pdfs/Quad tilt wing.pdf"
+  },
+  {
     title: "Element Analysis",
     discipline: "mechanical",
     category: "Element Analysis",
