@@ -119,6 +119,15 @@ const PORTFOLIO = {
       file: "assets/pdfs/LakeMichigan_Delineation.pdf"
     },
     {
+    title: "MicroPlastic Treatement in WWTP",
+    category: "Wastewater Treatment",
+    date: "2025",
+    image: "assets/images/wwtp.jpg",
+    description: "Microplastic treatment in wastewater treatment plants using different treatment methods.",
+    skills: ["Research", "Method Analysis", "Wastewater Treatment"],
+    file: "assets/pdfs/Microplastics Wastewater treatement.pdf"
+    },
+    {
     title: "Florida Extreme Weather and Flood Risk Analysis",
     category: "Data Analysis and Visualization",
     date: "2024",
