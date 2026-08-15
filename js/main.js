@@ -233,19 +233,60 @@ function setupEngineeringCarousel(trackId, prevId, nextId) {
 
   if (!track || !prev || !next) return;
 
-  const AUTO_DELAY = 7000;      // 7 seconds between slides
-  const ANIMATION_TIME = 700;   // slide animation duration
+  const originalCards = Array.from(track.children);
 
+  // No carousel needed if there are only 3 or fewer projects
+  if (originalCards.length <= 3) {
+    prev.style.display = "none";
+    next.style.display = "none";
+    return;
+  }
+
+  const visibleCards = 3;
+  const AUTO_DELAY = 7000;
+  const TRANSITION_TIME = 800;
+
+  let currentIndex = visibleCards;
   let autoplayTimer = null;
   let isAnimating = false;
 
-  const prefersReducedMotion = window.matchMedia(
-    "(prefers-reduced-motion: reduce)"
-  ).matches;
 
+  /* ============================================================
+     CREATE CLONES FOR INFINITE LOOP
+     ============================================================ */
+
+  const firstClones = originalCards
+    .slice(0, visibleCards)
+    .map(card => card.cloneNode(true));
+
+  const lastClones = originalCards
+    .slice(-visibleCards)
+    .map(card => card.cloneNode(true));
+
+  lastClones.forEach(card => {
+    card.classList.add("carousel-clone");
+  });
+
+  firstClones.forEach(card => {
+    card.classList.add("carousel-clone");
+  });
+
+  lastClones.forEach(card => {
+    track.insertBefore(card, track.firstChild);
+  });
+
+  firstClones.forEach(card => {
+    track.appendChild(card);
+  });
+
+
+  /* ============================================================
+     CARD DISTANCE
+     ============================================================ */
 
   function getCardDistance() {
     const card = track.querySelector(".card");
+
     if (!card) return 0;
 
     const styles = getComputedStyle(track);
@@ -255,92 +296,106 @@ function setupEngineeringCarousel(trackId, prevId, nextId) {
   }
 
 
-  /* ---------- NEXT ---------- */
+  /* ============================================================
+     MOVE CAROUSEL
+     ============================================================ */
 
-  function moveNext() {
-    if (isAnimating) return;
-
-    const cards = track.querySelectorAll(".card");
-
-    // No reason to rotate if there are 3 or fewer cards
-    if (cards.length <= 3) return;
-
+  function moveToIndex(animate = true) {
     const distance = getCardDistance();
+
     if (!distance) return;
 
-    isAnimating = true;
+    track.style.transition = animate
+      ? `transform ${TRANSITION_TIME}ms ease`
+      : "none";
 
-    track.scrollBy({
-      left: distance,
-      behavior: "smooth"
-    });
-
-    setTimeout(() => {
-      // Move first card to the end
-      const firstCard = track.firstElementChild;
-
-      if (firstCard) {
-        track.appendChild(firstCard);
-      }
-
-      // Reset scroll position invisibly
-      track.scrollLeft -= distance;
-
-      isAnimating = false;
-    }, ANIMATION_TIME);
+    track.style.transform =
+      `translateX(-${currentIndex * distance}px)`;
   }
 
 
-  /* ---------- PREVIOUS ---------- */
+  /* ============================================================
+     INITIAL POSITION
+     ============================================================ */
 
-  function movePrevious() {
-    if (isAnimating) return;
-
-    const cards = track.querySelectorAll(".card");
-
-    if (cards.length <= 3) return;
-
-    const distance = getCardDistance();
-    if (!distance) return;
-
-    isAnimating = true;
-
-    const lastCard = track.lastElementChild;
-
-    if (lastCard) {
-      track.prepend(lastCard);
-    }
-
-    // Position instantly so the newly prepended card is off-screen
-    track.scrollLeft += distance;
+  requestAnimationFrame(() => {
+    moveToIndex(false);
 
     requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        track.scrollBy({
-          left: -distance,
-          behavior: "smooth"
-        });
-      });
+      track.style.transition =
+        `transform ${TRANSITION_TIME}ms ease`;
     });
+  });
 
-    setTimeout(() => {
-      isAnimating = false;
-    }, ANIMATION_TIME);
+
+  /* ============================================================
+     NEXT
+     ============================================================ */
+
+  function nextSlide() {
+    if (isAnimating) return;
+
+    isAnimating = true;
+
+    currentIndex++;
+
+    moveToIndex(true);
   }
 
 
-  /* ---------- AUTOPLAY ---------- */
+  /* ============================================================
+     PREVIOUS
+     ============================================================ */
+
+  function previousSlide() {
+    if (isAnimating) return;
+
+    isAnimating = true;
+
+    currentIndex--;
+
+    moveToIndex(true);
+  }
+
+
+  /* ============================================================
+     INFINITE LOOP RESET
+     ============================================================ */
+
+  track.addEventListener("transitionend", () => {
+    const totalOriginal = originalCards.length;
+
+    // Passed the final real card into the cloned first cards
+    if (currentIndex >= totalOriginal + visibleCards) {
+
+      currentIndex = visibleCards;
+
+      moveToIndex(false);
+    }
+
+    // Passed backward into cloned last cards
+    else if (currentIndex < visibleCards) {
+
+      currentIndex = totalOriginal + visibleCards - 1;
+
+      moveToIndex(false);
+    }
+
+    isAnimating = false;
+  });
+
+
+  /* ============================================================
+     AUTOPLAY
+     ============================================================ */
 
   function startAutoplay() {
-    if (prefersReducedMotion) return;
-
     stopAutoplay();
 
     autoplayTimer = setInterval(() => {
-      moveNext();
+      nextSlide();
     }, AUTO_DELAY);
   }
-
 
   function stopAutoplay() {
     if (autoplayTimer) {
@@ -349,52 +404,51 @@ function setupEngineeringCarousel(trackId, prevId, nextId) {
     }
   }
 
-
   function restartAutoplay() {
     stopAutoplay();
     startAutoplay();
   }
 
 
-  /* ---------- ARROWS ---------- */
+  /* ============================================================
+     BUTTONS
+     ============================================================ */
 
   next.addEventListener("click", () => {
-    moveNext();
+    nextSlide();
     restartAutoplay();
   });
 
   prev.addEventListener("click", () => {
-    movePrevious();
+    previousSlide();
     restartAutoplay();
   });
 
 
-  /* ---------- PAUSE ON HOVER ---------- */
+  /* ============================================================
+     PAUSE ON HOVER
+     ============================================================ */
 
-  track.addEventListener("mouseenter", stopAutoplay);
-  track.addEventListener("mouseleave", startAutoplay);
+  const carousel = track.closest(".engineering-carousel");
 
-  prev.addEventListener("mouseenter", stopAutoplay);
-  prev.addEventListener("mouseleave", startAutoplay);
-
-  next.addEventListener("mouseenter", stopAutoplay);
-  next.addEventListener("mouseleave", startAutoplay);
+  if (carousel) {
+    carousel.addEventListener("mouseenter", stopAutoplay);
+    carousel.addEventListener("mouseleave", startAutoplay);
+  }
 
 
-  /* ---------- PAUSE WHILE USER IS INTERACTING ---------- */
+  /* ============================================================
+     RESIZE
+     ============================================================ */
 
-  track.addEventListener("focusin", stopAutoplay);
-
-  track.addEventListener("focusout", () => {
-    setTimeout(() => {
-      if (!track.contains(document.activeElement)) {
-        startAutoplay();
-      }
-    }, 100);
+  window.addEventListener("resize", () => {
+    moveToIndex(false);
   });
 
 
-  /* ---------- START ---------- */
+  /* ============================================================
+     START AUTOPLAY
+     ============================================================ */
 
   startAutoplay();
 }
