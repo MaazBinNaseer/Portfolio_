@@ -409,6 +409,89 @@ main{ max-width:1120px; margin:0 auto; padding:0 clamp(1.25rem, 5vw, 4rem); }
 /* ---------- MOBILE CAROUSEL ---------- */
 @media (max-width:760px){
 
+  /* ============================================================
+     ABOUT / HERO
+     ============================================================ */
+
+  .hero{
+    padding:3.5rem 0 2.5rem;
+    width:100%;
+  }
+
+  .hero h1{
+    font-size:2.2rem;
+  }
+
+  .hero-role{
+    margin-bottom:1.25rem;
+  }
+
+  /* Education becomes one column */
+  .hero-education{
+    grid-template-columns:1fr;
+    gap:1rem;
+    max-width:100%;
+    margin-bottom:2rem;
+  }
+
+  /* Bio and photo stack vertically */
+  .hero-bio-layout{
+    display:flex;
+    flex-direction:column;
+    gap:1.75rem;
+    width:100%;
+    max-width:100%;
+  }
+
+  /* Photo above Background / Objective */
+  .hero-photo{
+    order:-1;
+    width:100%;
+    justify-content:center;
+
+    /* Remove desktop positioning */
+    transform:none;
+  }
+
+  .hero-photo img{
+    width:180px;
+    height:180px;
+    aspect-ratio:1 / 1;
+    object-fit:cover;
+    border-radius:50%;
+  }
+
+  .hero-bio-content{
+    width:100%;
+  }
+
+  .hero-bio{
+    width:100%;
+    max-width:100%;
+    font-size:1rem;
+  }
+
+  /* Social links + résumé button */
+  .hero-links{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:.9rem;
+    width:100%;
+  }
+
+  .hero-links .btn{
+    width:100%;
+    margin-left:0;
+    margin-top:.5rem;
+    text-align:center;
+  }
+
+
+  /* ============================================================
+     ENGINEERING CAROUSEL
+     ============================================================ */
+
   .engineering-carousel-track .card{
     flex:0 0 100%;
   }
