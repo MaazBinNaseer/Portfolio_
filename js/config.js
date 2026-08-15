@@ -137,6 +137,15 @@ const PORTFOLIO = {
     file: "assets/pdfs/Coastal Flood Risk.pdf"
     },
     {
+    title: "Cancer Alley: The Environmental Catastrophe",
+    category: "Envirionmental Impacts",
+    date: "2024",
+    image: "assets/images/cancer_alley.webp",
+    description: "A broader look in Cancer Alley and the environmental impacts.",
+    skills: ["Online Research", "Toxins Research", "Environmental Impacts"],
+    file: "assets/pdfs/Cancer Alley_ Lost Hope.pdf"
+    },
+    {
     title: "Metal Slag testing",
     category: "Wastewater Leachate Testing",
     date: "2024",
