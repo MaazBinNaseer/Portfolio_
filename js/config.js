@@ -55,7 +55,7 @@ const PORTFOLIO = {
   "Minishell-42": "Unix Minishell",
   "Fract-ols": "Fractal Visualization Engine",
   "ft_irc_42": "IRC Server in C++",
-  "push_swap_latest": "Push_Swap Sorting Algorithm"
+  "Main_push_swap": "Push_Swap Sorting Algorithm"
 },
   // ---------- SKILLS & TECH STACK ----------
   skills: [
