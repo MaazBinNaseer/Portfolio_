@@ -100,61 +100,67 @@ const PORTFOLIO = {
   // Drop PDF files into assets/pdfs/ and point "file" at them.
   // Clicking a card opens the PDF inline in a modal.
   engineeringProjects: [
-    {
-      title: "100-Year Floodplain Delineation",
-      category: "Hydraulics and Hydrology",
-      date: "2025",
-      image: "assets/images/West River_page-0001.jpg",
-      description: "Floodplain mapping and hydraulic modeling for a river reach to learn FEMA map creation.",
-      skills: ["HEC-RAS", "HEC-HMS", "ArcGIS Pro"],
-      file: "assets/pdfs/West Nishanabontu River Flood Map.pdf"
-    },
-    {
-      title: "Lake Michigan Delineation",
-      category: "Shoreline Recession",
-      date: "2025",
-      image: "assets/images/Lake Michigan NSM.png",
-      description: "Lake Michigan shoreline analysis using Net Shoreline Movement.",
-      skills: ["DSAS", "QGIS", "ArcGIS Pro"],
-      file: "assets/pdfs/LakeMichigan_Delineation.pdf"
-    },
-    {
-    title: "MicroPlastic Treatement in WWTP",
+  {
+    title: "100-Year Floodplain Delineation",
+    discipline: "environmental",
+    category: "Hydraulics and Hydrology",
+    date: "2025",
+    image: "assets/images/West River_page-0001.jpg",
+    description: "Floodplain mapping and hydraulic modeling for a river reach to learn FEMA map creation.",
+    skills: ["HEC-RAS", "HEC-HMS", "ArcGIS Pro"],
+    file: "assets/pdfs/West Nishanabontu River Flood Map.pdf"
+  },
+  {
+    title: "Lake Michigan Delineation",
+    discipline: "environmental",
+    category: "Shoreline Recession",
+    date: "2025",
+    image: "assets/images/Lake Michigan NSM.png",
+    description: "Lake Michigan shoreline analysis using Net Shoreline Movement.",
+    skills: ["DSAS", "QGIS", "ArcGIS Pro"],
+    file: "assets/pdfs/LakeMichigan_Delineation.pdf"
+  },
+  {
+    title: "MicroPlastic Treatment in WWTP",
+    discipline: "environmental",
     category: "Wastewater Treatment",
     date: "2025",
     image: "assets/images/wwtp.jpg",
     description: "Microplastic treatment in wastewater treatment plants using different treatment methods.",
     skills: ["Research", "Method Analysis", "Wastewater Treatment"],
     file: "assets/pdfs/Microplastics Wastewater treatement.pdf"
-    },
-    {
+  },
+  {
     title: "Florida Extreme Weather and Flood Risk Analysis",
+    discipline: "environmental",
     category: "Data Analysis and Visualization",
     date: "2024",
     image: "assets/images/Data.png",
     description: "Flood Risk analysis for most severe weather events.",
     skills: ["Python", "Data Analysis", "Data Visualization", "Policy mitigation"],
     file: "assets/pdfs/Coastal Flood Risk.pdf"
-    },
-    {
+  },
+  {
     title: "Cancer Alley: The Environmental Catastrophe",
-    category: "Envirionmental Impacts",
+    discipline: "environmental",
+    category: "Environmental Impacts",
     date: "2024",
     image: "assets/images/cancer_alley.webp",
     description: "A broader look in Cancer Alley and the environmental impacts.",
     skills: ["Online Research", "Toxins Research", "Environmental Impacts"],
     file: "assets/pdfs/Cancer Alley_ Lost Hope.pdf"
-    },
-    {
+  },
+  {
     title: "Metal Slag testing",
+    discipline: "environmental",
     category: "Wastewater Leachate Testing",
     date: "2024",
     image: "",
     description: "Testing of metals slags for leachate",
-    skills: ["WasteWater Testing", "Laboratory Analysis", "Hypothesis",],
+    skills: ["WasteWater Testing", "Laboratory Analysis", "Hypothesis"],
     file: "assets/pdfs/Metal slag report.pdf"
-    }
-  ],
+  }
+],
 
   // ---------- RÉSUMÉ ----------
   // Drop your résumé PDF into assets/resume/ and point this at it.

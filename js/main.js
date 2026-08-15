@@ -11,7 +11,17 @@ document.addEventListener("DOMContentLoaded", () => {
   renderLiveProjects();
   renderEngineeringProjects();
   renderGithubProjects();
-  setupEngineeringCarousel();
+  setupEngineeringCarousel(
+    "environmental-grid",
+    "environmental-prev",
+    "environmental-next"
+  );
+
+  setupEngineeringCarousel(
+    "mechanical-grid",
+    "mechanical-prev",
+    "mechanical-next"
+  );
   setupModal();
 });
 
@@ -138,11 +148,32 @@ function renderLiveProjects() {
 }
 
 /* ---------- ENGINEERING PROJECT RESULTS ---------- */
-function renderEngineeringProjects() {
-  const el = document.getElementById("engineering-grid");
+/* ---------- ENGINEERING PROJECT RESULTS ---------- */
 
-  el.innerHTML = (PORTFOLIO.engineeringProjects || []).map((p, i) => `
+function renderEngineeringProjects() {
+  const projects = PORTFOLIO.engineeringProjects || [];
+
+  const environmentalProjects = projects.filter(
+    p => p.discipline === "environmental"
+  );
+
+  const mechanicalProjects = projects.filter(
+    p => p.discipline === "mechanical"
+  );
+
+  renderEngineeringGroup("environmental-grid", environmentalProjects);
+  renderEngineeringGroup("mechanical-grid", mechanicalProjects);
+}
+
+
+function renderEngineeringGroup(gridId, projects) {
+  const el = document.getElementById(gridId);
+
+  if (!el) return;
+
+  el.innerHTML = projects.map((p, i) => `
     <div class="card accent-amber" tabindex="0" data-index="${i}">
+
       <div class="card-media">
         ${p.image
           ? `<img src="${p.image}" alt="${escapeHtml(p.title)} preview">`
@@ -151,7 +182,10 @@ function renderEngineeringProjects() {
       </div>
 
       <div class="card-body">
-        <span class="pill">${escapeHtml(p.category || "Engineering")}</span>
+
+        <span class="pill">
+          ${escapeHtml(p.category || "Engineering")}
+        </span>
 
         <h3 class="card-title">
           ${escapeHtml(p.title)}
@@ -171,35 +205,40 @@ function renderEngineeringProjects() {
           <span>${escapeHtml(p.date || "")}</span>
           <span>View project →</span>
         </div>
+
       </div>
     </div>
   `).join("");
 
+
   el.querySelectorAll(".card").forEach(card => {
     card.addEventListener("click", () => {
-      const p = PORTFOLIO.engineeringProjects[card.dataset.index];
+
+      const p = projects[card.dataset.index];
 
       if (p.file) {
         window.open(p.file, "_blank");
       }
+
     });
   });
 
   bindKeyboardActivation(el);
 }
 
-function setupEngineeringCarousel() {
-  const track = document.getElementById("engineering-grid");
-  const prev = document.getElementById("engineering-prev");
-  const next = document.getElementById("engineering-next");
+function setupEngineeringCarousel(trackId, prevId, nextId) {
+  const track = document.getElementById(trackId);
+  const prev = document.getElementById(prevId);
+  const next = document.getElementById(nextId);
 
   if (!track || !prev || !next) return;
 
   const scrollOneCard = direction => {
     const card = track.querySelector(".card");
+
     if (!card) return;
 
-    const gap = 24; // 1.5rem
+    const gap = 24;
     const distance = card.offsetWidth + gap;
 
     track.scrollBy({
