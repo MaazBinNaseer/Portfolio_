@@ -159,6 +159,16 @@ const PORTFOLIO = {
     description: "Testing of metals slags for leachate",
     skills: ["WasteWater Testing", "Laboratory Analysis", "Hypothesis"],
     file: "assets/pdfs/Metal slag report.pdf"
+  },
+  {
+    title: "Numerical Analysis of Bracket",
+    discipline: "mechanical",
+    category: "Structural Analysis",
+    date: "2017",
+    image: "assets/images/Bracket.png",
+    description: "Numerical Analysis using ANSYS",
+    skills: ["WasteWater Testing", "Laboratory Analysis", "Hypothesis"],
+    file: "assets/pdfs/Numerical Analysis on 3D Bracket.pdf"
   }
 ],
 
