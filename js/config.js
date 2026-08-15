@@ -181,6 +181,16 @@ const PORTFOLIO = {
     file: "assets/pdfs/Quad tilt wing.pdf"
   },
   {
+    title: "Pocket Design",
+    discipline: "mechanical",
+    category: "Structural Analysis",
+    date: "2018",
+    image: "assets/images/Pocket.png",
+    description: "Structural Analysis of Turbo Pocket rotor using Ansys",
+    skills: ["Experimentation", "Aerodynamics", "Structural Analysis"],
+    file: "assets/pdfs/Pocket Design.pdf"
+  },
+  {
     title: "Element Analysis",
     discipline: "mechanical",
     category: "Element Analysis",
