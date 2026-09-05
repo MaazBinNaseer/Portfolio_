@@ -152,6 +152,20 @@ main{ max-width:1120px; margin:0 auto; padding:0 clamp(1.25rem, 5vw, 4rem); }
 }
 
 /* ============================================================
+   CARD STYLING
+   ============================================================ */
+a.card.accent-amber {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Only underline "View project →" */
+a.card.accent-amber .card-meta span:last-child {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ============================================================
    EDUCATION
    ============================================================ */
 
