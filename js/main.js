@@ -375,22 +375,20 @@ function renderEngineeringProjects() {
    Both real cards and cloned cards will now open the PDF.
    ============================================================ */
 
-function renderEngineeringGroup(
-  gridId,
-  projects
-) {
+function renderEngineeringGroup(gridId, projects) {
   const el = document.getElementById(gridId);
 
   if (!el) return;
 
   el.innerHTML = projects
     .map(
-      (p, i) => `
-        <div
+      p => `
+        <a
           class="card accent-amber"
-          tabindex="0"
-          role="link"
-          data-index="${i}"
+          href="${encodeURI(p.file)}"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Open ${escapeHtml(p.title)} PDF"
         >
 
           <div class="card-media">
@@ -428,14 +426,13 @@ function renderEngineeringGroup(
               ${(p.skills || [])
                 .map(
                   skill =>
-                    `<span class="tag">${escapeHtml(
-                      skill
-                    )}</span>`
+                    `<span class="tag">${escapeHtml(skill)}</span>`
                 )
                 .join("")}
             </div>
 
             <div class="card-meta">
+
               <span>
                 ${escapeHtml(p.date || "")}
               </span>
@@ -443,84 +440,15 @@ function renderEngineeringGroup(
               <span>
                 View project →
               </span>
+
             </div>
 
           </div>
-        </div>
+
+        </a>
       `
     )
     .join("");
-
-  /* ============================================================
-     PDF CLICK HANDLER
-
-     Event delegation means cloned carousel cards also work.
-     ============================================================ */
-
-  el.addEventListener("click", event => {
-    const card =
-      event.target.closest(".card");
-
-    if (!card) return;
-
-    if (!el.contains(card)) return;
-
-    const index =
-      Number(card.dataset.index);
-
-    const project =
-      projects[index];
-
-    if (!project) {
-      console.warn(
-        "Project not found for card index:",
-        index
-      );
-
-      return;
-    }
-
-    if (!project.file) {
-      console.warn(
-        "No PDF file configured for:",
-        project.title
-      );
-
-      return;
-    }
-
-    window.open(
-      project.file,
-      "_blank"
-    );
-  });
-
-  /* ============================================================
-     KEYBOARD SUPPORT
-
-     Also delegated so cloned cards respond to Enter / Space.
-     ============================================================ */
-
-  el.addEventListener(
-    "keydown",
-    event => {
-      const card =
-        event.target.closest(".card");
-
-      if (!card) return;
-
-      if (!el.contains(card)) return;
-
-      if (
-        event.key === "Enter" ||
-        event.key === " "
-      ) {
-        event.preventDefault();
-
-        card.click();
-      }
-    }
-  );
 }
 
 /* ============================================================
