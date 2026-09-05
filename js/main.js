@@ -27,7 +27,6 @@ document.addEventListener("DOMContentLoaded", () => {
   setupModal();
 });
 
-
 /* ============================================================
    ABOUT
    ============================================================ */
@@ -40,13 +39,13 @@ function renderAbout() {
   setText("hero-role", PORTFOLIO.role);
 
   const bio = document.getElementById("hero-bio");
+
   if (bio) {
     bio.innerHTML = PORTFOLIO.bio;
   }
 
   setText("footer-name", PORTFOLIO.name);
 }
-
 
 /* ============================================================
    EDUCATION
@@ -65,9 +64,10 @@ function renderEducation() {
           <div class="education-icon">
             ${
               item.icon
-                ? `<img src="${item.icon}" alt="${escapeHtml(
-                    item.school
-                  )} logo">`
+                ? `<img
+                    src="${item.icon}"
+                    alt="${escapeHtml(item.school)} logo"
+                  >`
                 : ""
             }
           </div>
@@ -84,8 +84,8 @@ function renderEducation() {
               ${
                 item.location
                   ? `<span class="education-location">
-                       · ${escapeHtml(item.location)}
-                     </span>`
+                      · ${escapeHtml(item.location)}
+                    </span>`
                   : ""
               }
             </div>
@@ -97,7 +97,6 @@ function renderEducation() {
     )
     .join("");
 }
-
 
 /* ============================================================
    SOCIAL LINKS
@@ -184,7 +183,6 @@ function renderSocials() {
   }
 }
 
-
 /* ============================================================
    SKILLS
    ============================================================ */
@@ -217,7 +215,6 @@ function renderSkills() {
     )
     .join("");
 }
-
 
 /* ============================================================
    LIVE WEBSITE PROJECTS
@@ -273,7 +270,6 @@ function renderLiveProjects() {
             </div>
 
           </div>
-
         </div>
       `
     )
@@ -335,7 +331,6 @@ function renderLiveProjects() {
   bindKeyboardActivation(el);
 }
 
-
 /* ============================================================
    ENGINEERING PROJECTS
    ============================================================ */
@@ -365,9 +360,19 @@ function renderEngineeringProjects() {
   );
 }
 
-
 /* ============================================================
    RENDER ENGINEERING GROUP
+
+   IMPORTANT:
+   The carousel clones cards with cloneNode(true).
+
+   cloneNode copies the HTML but DOES NOT copy JavaScript
+   click event listeners.
+
+   Because of that we attach ONE click listener to the parent
+   grid. This is called event delegation.
+
+   Both real cards and cloned cards will now open the PDF.
    ============================================================ */
 
 function renderEngineeringGroup(
@@ -389,20 +394,16 @@ function renderEngineeringGroup(
         >
 
           <div class="card-media">
-
             ${
               p.image
                 ? `
                   <img
                     src="${p.image}"
-                    alt="${escapeHtml(
-                      p.title
-                    )} preview"
+                    alt="${escapeHtml(p.title)} preview"
                   >
                 `
                 : "PDF"
             }
-
           </div>
 
           <div class="card-body">
@@ -424,7 +425,6 @@ function renderEngineeringGroup(
             </p>
 
             <div class="card-skills">
-
               ${(p.skills || [])
                 .map(
                   skill =>
@@ -433,11 +433,9 @@ function renderEngineeringGroup(
                     )}</span>`
                 )
                 .join("")}
-
             </div>
 
             <div class="card-meta">
-
               <span>
                 ${escapeHtml(p.date || "")}
               </span>
@@ -445,30 +443,18 @@ function renderEngineeringGroup(
               <span>
                 View project →
               </span>
-
             </div>
 
           </div>
-
         </div>
       `
     )
     .join("");
 
-
   /* ============================================================
-     IMPORTANT FIX
+     PDF CLICK HANDLER
 
-     Use event delegation on the GRID instead of attaching
-     click events directly to each card.
-
-     Why?
-
-     The carousel creates copies with cloneNode(true).
-     cloneNode() copies HTML but NOT JavaScript event listeners.
-
-     Because the event listener is now attached to the parent
-     grid, both the original cards AND cloned cards work.
+     Event delegation means cloned carousel cards also work.
      ============================================================ */
 
   el.addEventListener("click", event => {
@@ -485,7 +471,14 @@ function renderEngineeringGroup(
     const project =
       projects[index];
 
-    if (!project) return;
+    if (!project) {
+      console.warn(
+        "Project not found for card index:",
+        index
+      );
+
+      return;
+    }
 
     if (!project.file) {
       console.warn(
@@ -502,12 +495,10 @@ function renderEngineeringGroup(
     );
   });
 
-
   /* ============================================================
      KEYBOARD SUPPORT
 
-     This is also delegated so cloned carousel cards work
-     with Enter and Space.
+     Also delegated so cloned cards respond to Enter / Space.
      ============================================================ */
 
   el.addEventListener(
@@ -532,7 +523,6 @@ function renderEngineeringGroup(
   );
 }
 
-
 /* ============================================================
    ENGINEERING CAROUSEL
    ============================================================ */
@@ -555,13 +545,11 @@ function setupEngineeringCarousel(
     return;
   }
 
-
   const originalCards =
     Array.from(track.children);
 
-
   /* ------------------------------------------------------------
-     NO CAROUSEL NEEDED FOR 3 OR FEWER CARDS
+     No carousel needed for three or fewer projects
      ------------------------------------------------------------ */
 
   if (originalCards.length <= 3) {
@@ -571,13 +559,11 @@ function setupEngineeringCarousel(
     return;
   }
 
-
   const visibleCards = 3;
 
   const AUTO_DELAY = 5000;
 
   const TRANSITION_TIME = 800;
-
 
   let currentIndex =
     visibleCards;
@@ -587,7 +573,6 @@ function setupEngineeringCarousel(
 
   let isAnimating =
     false;
-
 
   /* ============================================================
      CREATE CLONES FOR INFINITE LOOP
@@ -600,7 +585,6 @@ function setupEngineeringCarousel(
         card.cloneNode(true)
       );
 
-
   const lastClones =
     originalCards
       .slice(-visibleCards)
@@ -608,13 +592,11 @@ function setupEngineeringCarousel(
         card.cloneNode(true)
       );
 
-
   lastClones.forEach(card => {
     card.classList.add(
       "carousel-clone"
     );
   });
-
 
   firstClones.forEach(card => {
     card.classList.add(
@@ -622,12 +604,9 @@ function setupEngineeringCarousel(
     );
   });
 
-
   /*
-    Insert last clones before original cards.
-
-    We reverse the insertion loop so the
-    visual order stays correct.
+     Insert the cloned last cards before
+     the first real card.
   */
 
   for (
@@ -641,11 +620,14 @@ function setupEngineeringCarousel(
     );
   }
 
+  /*
+     Insert cloned first cards after
+     the final real card.
+  */
 
   firstClones.forEach(card => {
     track.appendChild(card);
   });
-
 
   /* ============================================================
      CARD DISTANCE
@@ -657,21 +639,17 @@ function setupEngineeringCarousel(
 
     if (!card) return 0;
 
-
     const styles =
       getComputedStyle(track);
 
-
     const gap =
       parseFloat(styles.gap) || 0;
-
 
     return (
       card.getBoundingClientRect().width +
       gap
     );
   }
-
 
   /* ============================================================
      MOVE CAROUSEL
@@ -683,22 +661,18 @@ function setupEngineeringCarousel(
     const distance =
       getCardDistance();
 
-
     if (!distance) return;
-
 
     track.style.transition =
       animate
         ? `transform ${TRANSITION_TIME}ms ease`
         : "none";
 
-
     track.style.transform =
       `translateX(-${
         currentIndex * distance
       }px)`;
   }
-
 
   /* ============================================================
      INITIAL POSITION
@@ -707,13 +681,11 @@ function setupEngineeringCarousel(
   requestAnimationFrame(() => {
     moveToIndex(false);
 
-
     requestAnimationFrame(() => {
       track.style.transition =
         `transform ${TRANSITION_TIME}ms ease`;
     });
   });
-
 
   /* ============================================================
      NEXT SLIDE
@@ -722,15 +694,12 @@ function setupEngineeringCarousel(
   function nextSlide() {
     if (isAnimating) return;
 
-
     isAnimating = true;
 
     currentIndex++;
 
-
     moveToIndex(true);
   }
-
 
   /* ============================================================
      PREVIOUS SLIDE
@@ -739,15 +708,12 @@ function setupEngineeringCarousel(
   function previousSlide() {
     if (isAnimating) return;
 
-
     isAnimating = true;
 
     currentIndex--;
 
-
     moveToIndex(true);
   }
-
 
   /* ============================================================
      INFINITE LOOP RESET
@@ -759,10 +725,9 @@ function setupEngineeringCarousel(
       const totalOriginal =
         originalCards.length;
 
-
       /*
-        Passed the final real card
-        and entered the cloned first cards.
+         Passed final real card and
+         entered cloned first cards.
       */
 
       if (
@@ -772,14 +737,12 @@ function setupEngineeringCarousel(
         currentIndex =
           visibleCards;
 
-
         moveToIndex(false);
       }
 
-
       /*
-        Passed backward into
-        the cloned last cards.
+         Passed backward into
+         cloned last cards.
       */
 
       else if (
@@ -791,15 +754,12 @@ function setupEngineeringCarousel(
           visibleCards -
           1;
 
-
         moveToIndex(false);
       }
-
 
       isAnimating = false;
     }
   );
-
 
   /* ============================================================
      AUTOPLAY
@@ -808,13 +768,11 @@ function setupEngineeringCarousel(
   function startAutoplay() {
     stopAutoplay();
 
-
     autoplayTimer =
       setInterval(() => {
         nextSlide();
       }, AUTO_DELAY);
   }
-
 
   function stopAutoplay() {
     if (autoplayTimer) {
@@ -822,19 +780,15 @@ function setupEngineeringCarousel(
         autoplayTimer
       );
 
-
       autoplayTimer =
         null;
     }
   }
 
-
   function restartAutoplay() {
     stopAutoplay();
-
     startAutoplay();
   }
-
 
   /* ============================================================
      NEXT / PREVIOUS BUTTONS
@@ -849,7 +803,6 @@ function setupEngineeringCarousel(
     }
   );
 
-
   prev.addEventListener(
     "click",
     () => {
@@ -858,7 +811,6 @@ function setupEngineeringCarousel(
       restartAutoplay();
     }
   );
-
 
   /* ============================================================
      PAUSE ON HOVER
@@ -869,20 +821,17 @@ function setupEngineeringCarousel(
       ".engineering-carousel"
     );
 
-
   if (carousel) {
     carousel.addEventListener(
       "mouseenter",
       stopAutoplay
     );
 
-
     carousel.addEventListener(
       "mouseleave",
       startAutoplay
     );
   }
-
 
   /* ============================================================
      RESIZE
@@ -895,14 +844,12 @@ function setupEngineeringCarousel(
     }
   );
 
-
   /* ============================================================
      START AUTOPLAY
      ============================================================ */
 
   startAutoplay();
 }
-
 
 /* ============================================================
    CODING PROJECTS — LIVE FROM GITHUB
@@ -914,19 +861,15 @@ async function renderGithubProjects() {
       "code-grid"
     );
 
-
   const status =
     document.getElementById(
       "code-status"
     );
 
-
   if (!el || !status) return;
-
 
   const username =
     PORTFOLIO.githubUsername;
-
 
   if (
     !username ||
@@ -939,14 +882,11 @@ async function renderGithubProjects() {
     return;
   }
 
-
   status.textContent =
     "Loading repositories from GitHub…";
 
-
   try {
     let repos;
-
 
     /* ----------------------------------------------------------
        PINNED REPOSITORIES
@@ -970,11 +910,9 @@ async function renderGithubProjects() {
           )
         );
 
-
       repos =
         results.filter(Boolean);
     }
-
 
     /* ----------------------------------------------------------
        AUTOMATIC REPOSITORY LIST
@@ -986,17 +924,14 @@ async function renderGithubProjects() {
           `https://api.github.com/users/${username}/repos?sort=updated&per_page=100`
         );
 
-
       if (!response.ok) {
         throw new Error(
           `GitHub API returned ${response.status}`
         );
       }
 
-
       let all =
         await response.json();
-
 
       if (
         PORTFOLIO.githubExcludeForks
@@ -1007,7 +942,6 @@ async function renderGithubProjects() {
           );
       }
 
-
       repos =
         all.slice(
           0,
@@ -1016,7 +950,6 @@ async function renderGithubProjects() {
         );
     }
 
-
     if (!repos.length) {
       status.textContent =
         "No public repositories found.";
@@ -1024,9 +957,7 @@ async function renderGithubProjects() {
       return;
     }
 
-
     status.textContent = "";
-
 
     el.innerHTML =
       repos
@@ -1093,15 +1024,12 @@ async function renderGithubProjects() {
                 </div>
 
               </div>
-
             </div>
           `
         )
         .join("");
 
-
     window.__repos = repos;
-
 
     el.querySelectorAll(
       ".card"
@@ -1114,9 +1042,7 @@ async function renderGithubProjects() {
               card.dataset.index
             ];
 
-
           if (!r) return;
-
 
           openModal(`
             <span class="pill">
@@ -1179,20 +1105,16 @@ async function renderGithubProjects() {
       );
     });
 
-
     bindKeyboardActivation(el);
   }
-
 
   catch (err) {
     status.textContent =
       "Couldn't load repositories right now — check githubUsername in config.js.";
 
-
     console.error(err);
   }
 }
-
 
 /* ============================================================
    MODAL
@@ -1204,23 +1126,19 @@ function setupModal() {
       "modal-overlay"
     );
 
-
   const closeButton =
     document.getElementById(
       "modal-close"
     );
 
-
   if (!overlay || !closeButton) {
     return;
   }
-
 
   closeButton.addEventListener(
     "click",
     closeModal
   );
-
 
   overlay.addEventListener(
     "click",
@@ -1232,7 +1150,6 @@ function setupModal() {
       }
     }
   );
-
 
   document.addEventListener(
     "keydown",
@@ -1246,33 +1163,27 @@ function setupModal() {
   );
 }
 
-
 function openModal(html) {
   const body =
     document.getElementById(
       "modal-body"
     );
 
-
   const overlay =
     document.getElementById(
       "modal-overlay"
     );
 
-
   if (!body || !overlay) {
     return;
   }
 
-
   body.innerHTML = html;
-
 
   overlay.classList.add(
     "open"
   );
 }
-
 
 function closeModal() {
   const body =
@@ -1280,12 +1191,10 @@ function closeModal() {
       "modal-body"
     );
 
-
   const overlay =
     document.getElementById(
       "modal-overlay"
     );
-
 
   if (overlay) {
     overlay.classList.remove(
@@ -1293,12 +1202,10 @@ function closeModal() {
     );
   }
 
-
   if (body) {
     body.innerHTML = "";
   }
 }
-
 
 /* ============================================================
    HELPERS
@@ -1308,12 +1215,10 @@ function setText(id, text) {
   const el =
     document.getElementById(id);
 
-
   if (el) {
     el.textContent = text;
   }
 }
-
 
 function escapeHtml(str) {
   return String(str).replace(
@@ -1328,7 +1233,6 @@ function escapeHtml(str) {
       })[character]
   );
 }
-
 
 function bindKeyboardActivation(
   container
